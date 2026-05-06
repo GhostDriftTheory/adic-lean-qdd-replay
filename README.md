@@ -19,6 +19,15 @@ The main Lean file is:
 ADIC_RSound_Replay.lean
 ```
 
+## What this proof establishes
+
+This file proves the **soundness** of the ADIC replay verifier:
+
+> If `verifierBool D cert = true`, then the certificate is semantically valid
+> under the fixed-point interval arithmetic model.
+
+Top-level theorem: `verifierBool_sound`
+
 ## Scope
 
 This repository formalizes the Lean-side replay soundness structure for ADIC.
@@ -31,6 +40,13 @@ spec rows
 replay verification
 semantic validity
 acceptance soundness
+```
+
+It does not cover:
+```text
+Completeness (the verifier may reject valid certificates)
+Correctness of the production implementation
+The mapping from real AI decision records to the formal model
 ```
 
 The goal is not to verify an entire deployed software system, but to provide a mechanically checked formal core for the replay verification argument used in ADIC.
@@ -119,5 +135,5 @@ Preprint: [Verifier Closure for Fixed-Core Interval Programs: A Certified Replay
 Archival DOI:
 
 ```text
-10.5281/zenodo.19808324
+10.5281/zenodo.19821808
 ```
