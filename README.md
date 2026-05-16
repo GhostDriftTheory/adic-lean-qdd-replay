@@ -1,67 +1,87 @@
-# ADIC R-SOUND Replay Verification
-[![Lean CI](https://github.com/GhostDriftTheory/adic-lean-proof-replay/actions/workflows/ci.yml/badge.svg)](https://github.com/GhostDriftTheory/adic-lean-proof-replay/actions/workflows/ci.yml)
+# ADIC Quantum Drug Discovery Replay Extension
 
-This repository contains a reproducible Lean 4 proof artifact for ADIC replay verification.
+[![Lean CI](https://github.com/GhostDriftTheory/adic-lean-qdd-replay/actions/workflows/ci.yml/badge.svg)](https://github.com/GhostDriftTheory/adic-lean-qdd-replay/actions/workflows/ci.yml)
 
-It shows, in a mechanically checked form, that when an ADIC replay certificate is accepted by the verifier, the corresponding semantic-validity condition follows.
+This repository contains a reproducible Lean 4 artifact for an ADIC domain extension in quantum-assisted drug-discovery candidate selection.
 
-In the ADIC architecture, this provides the formal core for preserving accountability after deployment.
+It extends the ADIC replay-verification architecture to candidate-selection evidence in a quantum drug discovery setting.
 
-## Conceptual flow of ADIC replay verification
+The artifact shows how candidate identifiers, scores, thresholds, uncertainty, ADMET-related checks, provenance, evidence references, human approval records, and verification obligations can be represented as replay-checkable decision evidence.
 
-![Conceptual flow of ADIC replay verification](./adic-replay-verification-flow.png)
+This repository does not formalize quantum mechanics, molecular biology, therapeutic efficacy, clinical safety, or drug approval.
 
-Note: In this repository, ADIC denotes the audit/verifier architecture studied in the accompanying paper; it is unrelated to p-adic numbers.
+## Overview
 
-The main Lean file is:
+![ADIC Quantum Drug Discovery Replay Extension flow](./adic-qdd-replay-extension-flow.png)
+
+## Relationship to the ADIC core artifact
+
+This repository is derived from the ADIC replay-verification core artifact:
 
 ```text
-ADIC_RSound_Replay.lean
+https://github.com/GhostDriftTheory/adic-lean-proof-replay
 ```
 
-## What this proof establishes
+The original core artifact establishes the replay-verifier soundness structure for ADIC.
 
-This file proves the **soundness** of the ADIC replay verifier:
+This repository keeps that core and adds a quantum drug discovery domain layer.
 
-> If `verifierBool D cert = true`, then the certificate is semantically valid
-> under the fixed-point interval arithmetic model.
+## Main Lean files
 
-Top-level theorem: `verifierBool_sound`
+```text
+ADIC_RSound_Replay.lean              ADIC replay-verification core
+ADIC_QuantumDrugDiscovery.lean       Quantum drug-discovery domain extension
+```
+
+## What this artifact establishes
+
+This artifact establishes a replay-checkable structure for quantum-assisted drug-discovery candidate-selection evidence.
+
+At a high level, it shows that candidate-selection decisions can be organized into ADIC-style packages containing:
+
+```text
+candidate identifiers
+evaluation values
+thresholds
+uncertainty information
+constraint checks
+ADMET-related checks
+evidence references
+provenance references
+human approval records
+verification obligations
+```
+
+The intended verification target is not whether a molecule is therapeutically effective.
+
+The target is whether the recorded candidate-selection decision satisfies the replay-checkable obligations associated with the decision package.
+
+
+## Verification target
+
+The Lean artifact verifies the replay-checkable structure of candidate-selection evidence.
+
+The verification target is not the scientific validity of the molecular candidate itself, but the consistency of the recorded decision package with the obligations required for replay verification.
+
+In this sense, the artifact provides an accountability layer for quantum-assisted drug-discovery workflows: it checks whether the recorded decision evidence can be replayed and verified after the fact.
 
 ## Scope
 
-This repository formalizes the Lean-side replay soundness structure for ADIC.
-
-In particular, it covers the connection between:
-
-```text
-certificate rows
-spec rows
-replay verification
-semantic validity
-acceptance soundness
-```
+This repository covers the Lean-side structure for replay-verifiable candidate-selection evidence.
 
 It does not cover:
+
 ```text
-Completeness (the verifier may reject valid certificates)
-Correctness of the production implementation
-The mapping from real AI decision records to the formal model
+Quantum-mechanical correctness
+Molecular simulation correctness
+Docking-model correctness
+Therapeutic efficacy
+Clinical safety
+Regulatory approval
+Production-system correctness
 ```
 
-The goal is not to verify an entire deployed software system, but to provide a mechanically checked formal core for the replay verification argument used in ADIC.
-
-## DAG representation note
-
-The DAG layer in this repository is formalized as a replay-oriented row-list lowering layer. The compiler-correctness lemmas establish correspondence between DAG-level syntax and the compiled replay-row representation used by the verifier.
-
-Accordingly, the DAG results should be read as row-list lowering correctness / replay representation correspondence, not as a full general-purpose compiler correctness theorem for arbitrary deployed software.
-
-## Main theorem direction
-
-At a high level, the file establishes that if an ADIC certificate is accepted by the replay verifier, then the corresponding semantic validity condition follows.
-
-This supports the ADIC idea that audit acceptance should not be a loose runtime judgment, but a reproducible verification result.
+The goal is to provide a mechanically checked domain-layer extension showing how ADIC replay verification can be applied to quantum-assisted drug-discovery candidate selection.
 
 ## Reproducibility
 
@@ -72,8 +92,8 @@ The Lean version is fixed by `lean-toolchain`, and Mathlib is pinned through `la
 A fresh clone should verify with:
 
 ```bash
-git clone https://github.com/GhostDriftTheory/adic-lean-proof-replay.git
-cd adic-lean-proof-replay
+git clone https://github.com/GhostDriftTheory/adic-lean-qdd-replay.git
+cd adic-lean-qdd-replay
 lake exe cache get
 lake build
 ```
@@ -83,12 +103,13 @@ Successful verification means that `lake build` completes without errors.
 ## Repository structure
 
 ```text
-ADIC_RSound_Replay.lean        Main Lean formalization
-lean-toolchain                 Lean toolchain pin
-lakefile.lean                  Lake project file
-lake-manifest.json             Lake dependency lock file generated by `lake update`
-.github/workflows/ci.yml       GitHub Actions verification workflow
-README.md                      Repository description
+ADIC_RSound_Replay.lean              ADIC replay-verification core
+ADIC_QuantumDrugDiscovery.lean       Quantum drug-discovery domain extension
+lean-toolchain                       Lean toolchain pin
+lakefile.lean                        Lake project file
+lake-manifest.json                   Lake dependency lock file generated by `lake update`
+.github/workflows/ci.yml             GitHub Actions verification workflow
+README.md                            Repository description
 ```
 
 ## Verification evidence
@@ -103,37 +124,16 @@ The GitHub Actions workflow runs the same Lean/Lake verification on every push a
 
 Screenshots may be kept as supplementary evidence, but they are not the reproducibility mechanism.
 
-## Paper-to-Lean correspondence
+## Public positioning
 
-The accompanying paper contains a full Lean correspondence table. The key
-identifiers can be checked directly in:
+This repository should be cited as:
 
 ```text
-ADIC_RSound_Replay.lean
+ADIC Quantum Drug Discovery Replay Extension
 ```
 
-Representative grep targets are:
-
-| Paper statement | Lean identifier(s) |
-|---|---|
-| Galois insertion | `gc_alpha_gamma`, `alpha_gamma_strict` |
-| Truth preservation of tau | `tau_preserves`, `tau_truth` |
-| FDIV/CDIV witness bounds | `fdiv_bound`, `cdiv_bound` |
-| R-SOUND for addition/subtraction | `rsound_add`, `rsound_sub` |
-| R-SOUND for multiplication | `rsound_mul`, `rsound_mul_closed` |
-| R-SOUND for inverse | `rsound_inv`, `rsound_inv_closed` |
-| R-SOUND for square root | `rsound_sqrt`, `rsound_sqrt_closed` |
-| R-SOUND for ReLU | `rsound_relu` |
-| Replay verifier soundness | `verifierBool_sound`, `verifierBool_sound_unique` |
-| DAG replay soundness | `verifierDAGBool_direct_sound`, `dagCert_end_to_end_sound` |
-| Structural cost bound | `verifierBoolStructuralCost_eq_size`, `replayVerifierStructuralCost_linear` |
-
-## Related paper and archival record
-
-Preprint: [Verifier Closure for Fixed-Core Interval Programs: A Certified Replay Architecture in Lean4](https://zenodo.org/records/19821808)
-
-Archival DOI:
+Recommended one-line description:
 
 ```text
-10.5281/zenodo.19821808
+A Lean 4 domain-layer artifact showing how ADIC replay verification can be extended to quantum-assisted drug-discovery candidate selection.
 ```
