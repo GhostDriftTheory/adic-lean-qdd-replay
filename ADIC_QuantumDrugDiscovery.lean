@@ -1774,4 +1774,29 @@ def ReplayVerifiableCandidateSelectionV2
   QDDDeclaredDecisionValidV2 D rows d p rp
 
 end QuantumDrugDiscovery
+
+#print axioms ADIC.QuantumDrugDiscovery.qdd_replay_sound
+#print axioms ADIC.QuantumDrugDiscovery.qdd_productVerifier_sound
+
+#print axioms ADIC.QuantumDrugDiscovery.qdd_selected_replay_sound
+#print axioms ADIC.QuantumDrugDiscovery.qdd_rejected_replay_sound
+#print axioms ADIC.QuantumDrugDiscovery.qdd_needsReview_replay_sound
+
+#print axioms ADIC.QuantumDrugDiscovery.qdd_decision_replay_sound
+#print axioms ADIC.QuantumDrugDiscovery.qdd_declared_selected_valid_of_replay
+#print axioms ADIC.QuantumDrugDiscovery.qdd_declared_rejected_valid_of_replay
+#print axioms ADIC.QuantumDrugDiscovery.qdd_declared_needsReview_valid_of_replay
+#print axioms ADIC.QuantumDrugDiscovery.qdd_declared_decision_valid_of_replay
+
+#print axioms ADIC.QuantumDrugDiscovery.qdd_selected_productVerifier_sound
+#print axioms ADIC.QuantumDrugDiscovery.qdd_rejected_productVerifier_sound
+#print axioms ADIC.QuantumDrugDiscovery.qdd_needsReview_productVerifier_sound
+#print axioms ADIC.QuantumDrugDiscovery.qdd_decision_productVerifier_sound
+#print axioms ADIC.QuantumDrugDiscovery.qdd_declared_selected_valid_of_productVerifier
+#print axioms ADIC.QuantumDrugDiscovery.qdd_declared_rejected_valid_of_productVerifier
+#print axioms ADIC.QuantumDrugDiscovery.qdd_declared_needsReview_valid_of_productVerifier
+#print axioms ADIC.QuantumDrugDiscovery.qdd_declared_decision_valid_of_productVerifier
+
+#print axioms ADIC.QuantumDrugDiscovery.qdd_decision_replay_sound_v2
+
 end ADIC
