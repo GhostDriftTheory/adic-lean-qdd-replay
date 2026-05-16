@@ -3467,4 +3467,19 @@ end ReplayCore
 
 end
 
+#print axioms ADIC.tau_preserves
+#print axioms ADIC.tau_truth
+#print axioms ADIC.ReplayCore.dagCompiler_correct
+#print axioms ADIC.ReplayCore.dagCompiler_sound
+#print axioms ADIC.ReplayCore.dagCompiler_complete
+#print axioms ADIC.ReplayCore.acceptProp_sound
+#print axioms ADIC.ReplayCore.acceptProp_sound_unique
+#print axioms ADIC.ReplayCore.verifierBool_acceptProp
+#print axioms ADIC.ReplayCore.verifierBool_sound
+#print axioms ADIC.ReplayCore.verifierBool_sound_unique
+#print axioms ADIC.ReplayCore.verifierDAGBool_sound
+#print axioms ADIC.ReplayCore.verifierDAGBool_direct_sound
+#print axioms ADIC.ReplayCore.dagCert_end_to_end_sound
+#print axioms ADIC.ReplayCore.productVerifier_sound
+
 end ADIC
