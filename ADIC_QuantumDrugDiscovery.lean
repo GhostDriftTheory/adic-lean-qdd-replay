@@ -1,5 +1,5 @@
 import Mathlib
-import Adic.ADIC_RSound_Replay
+import ADIC_RSound_Replay
 
 set_option linter.style.whitespace false
 set_option linter.style.emptyLine false
